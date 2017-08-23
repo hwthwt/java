@@ -1,0 +1,22 @@
+package helloword;
+
+//public class helloword {
+//	public static void main(String[] args)
+//	  {
+//	       System.out.println("helloword");
+//	  }
+//}
+
+class FreshJuice {
+	   enum FreshJuiceSize{ SMALL, MEDIUM , LARGE }
+	   FreshJuiceSize size;
+	}
+	 
+
+public class helloword {
+	   public static void main(String []args){
+	      FreshJuice juice = new FreshJuice();
+	      juice.size = FreshJuice.FreshJuiceSize.MEDIUM  ;
+	      System.out.println("helloword");
+	   }
+	}
