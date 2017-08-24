@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<video width="320" height="240" controls>
-  <source src="./movie.mp4" type="video/mp4">
+  <head>
+    <title>HTML5 Video Pseudostreaming</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="http://blog.csdn.net//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+    $(document).ready(function(){   
+        var video = $('#myvideo');
 
+        $("#play").click(function(){  video[0].play();  }); 
+        $("#pause").click(function(){ video[0].pause(); });
+        $("#go10").click(function(){  video[0].currentTime+=10;  });
+        $("#back10").click(function(){  video[0].currentTime-=10;  });
+        $("#rate1").click(function(){  video[0].playbackRate+=2;  });
+        $("#rate0").click(function(){  video[0].playbackRate-=2;  });
+        $("#volume1").click(function(){  video[0].volume+=0.1;  });
+        $("#volume0").click(function(){  video[0].volume-=0.1;  });
+        $("#muted1").click(function(){  video[0].muted=true;  });
+        $("#muted0").click(function(){  video[0].muted=false;  });
+        $("#full").click(function(){  
+          video[0].webkitEnterFullscreen(); // webkit类型的浏览器
+          video[0].mozRequestFullScreen();  // FireFox浏览器
+        });
+    });
+
+    </script>
+</head> 
+<body>
+<video id="myvideo" width="80%" height="80%" controls="controls">
+    <source src="http://blog.csdn.net/luo_deng/article/details/stream?video=美丽的风景.mp4"  />
+    <!--<source src="http://blog.csdn.net/luo_deng/article/details/stream?video=美丽的风景.mp4" type="video/mp4" />
+    <source src="http://blog.csdn.net/luo_deng/article/details/stream?video=美丽的风景.mp4" type="video/webM" />
+    <source src="http://blog.csdn.net/luo_deng/article/details/stream?video=美丽的风景.mp4" type="video/ogg" />-->
+        你的浏览器不支持html5
 </video>
-</body>
-</html>
+<hr>
+<button id="play">播放</button>
+<button id="pause">暂停</button>
+<button id="go10">快进10秒</button>
+<button id="back10">快退10秒</button>
+<button id="rate1">播放速度+</button>
+<button id="rate0">播放速度-</button>
+<button id="volume1">声音+</button>
+<button id="volume0">声音-</button>
+<button id="muted1">静音</button>
+<button id="muted0">解除静音</button>
+<button id="full">全屏</button> 
+</body> 
+</html> 
