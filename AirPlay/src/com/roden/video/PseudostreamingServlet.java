@@ -2,7 +2,7 @@ package com.roden.video;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,9 +40,9 @@ public final class PseudostreamingServlet extends HttpServlet {
 
 	  private void processRequest(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
 
-	    String videoFilename = URLDecoder.decode(request.getParameter("video"), "UTF-8");
+	    //String videoFilename = URLDecoder.decode(request.getParameter("video"), "UTF-8");
 	    
-	    //String videoFilename = "fywl.mp4";
+	    String videoFilename = "KZP20141028VID3.mp4";
 	    Path video = Paths.get(videoPath, videoFilename);
 
 	    int length = (int) Files.size(video);
