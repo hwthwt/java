@@ -6,7 +6,7 @@
     <servlet-class>com.roden.video.PseudostreamingServlet</servlet-class>
     <init-param>
       <param-name>videoPath</param-name>
-      <param-value>E:/Media/电影/</param-value>
+      <param-value>E:/job</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
