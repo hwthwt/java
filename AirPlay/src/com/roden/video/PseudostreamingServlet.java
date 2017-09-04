@@ -1,8 +1,8 @@
-package com.roden.video;
+ package com.roden.video;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,14 +23,14 @@ public final class PseudostreamingServlet extends HttpServlet {
 
 	  private static final long serialVersionUID = 1L;
 
-	  private static final int BUFFER_LENGTH = 1024 * 16;
-	  private static final long EXPIRE_TIME = 1000 * 60 * 60 * 24;
+	  private static final int BUFFER_LENGTH = 1024 * 16 * 10;
+	  private static final long EXPIRE_TIME = 1000 * 60 * 60 * 24 * 10;
 	  private static final Pattern RANGE_PATTERN = Pattern.compile("bytes=(?<start>\\d*)-(?<end>\\d*)");
-	  private String videoPath;
+	  public String videoPath;
 
 	  @Override
 	  public void init() throws ServletException {
-	    videoPath = getInitParameter("videoPath");
+	    videoPath = getServletContext().getInitParameter("VideoPath");
 	  }
 
 	  @Override
@@ -40,9 +40,9 @@ public final class PseudostreamingServlet extends HttpServlet {
 
 	  private void processRequest(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
 
-	    //String videoFilename = URLDecoder.decode(request.getParameter("video"), "UTF-8");
+	    String videoFilename = URLDecoder.decode(request.getParameter("video"), "UTF-8");
 	    
-	    String videoFilename = "KZP20141028VID3.mp4";
+	    //String videoFilename = "fywl.mp4";
 	    Path video = Paths.get(videoPath, videoFilename);
 
 	    int length = (int) Files.size(video);
@@ -79,7 +79,6 @@ public final class PseudostreamingServlet extends HttpServlet {
 	    int bytesRead;
 	    int bytesLeft = contentLength;
 	    ByteBuffer buffer = ByteBuffer.allocate(BUFFER_LENGTH);
-
 	    try (SeekableByteChannel input = Files.newByteChannel(video, READ);
 	            OutputStream output = response.getOutputStream()) {
 
